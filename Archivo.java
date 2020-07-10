@@ -44,4 +44,33 @@ class Archivo
             System.out.println("Error al crear el Archivo");
         }
     }
+
+    public static void crearArchivo(ArrayList<String> contenido, String nombre)
+    {
+        try
+        {
+            String ruta = "./" + nombre;
+            File file = new File(ruta);
+
+            if(!file.exists())
+            {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file, true); 
+            BufferedWriter bw = new BufferedWriter (fw);
+
+            for (int i=0; i<contenido.size(); i++) 
+            {
+                bw.write(contenido.get(i)+"\n");
+            }
+            
+            bw.close();
+        }
+
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

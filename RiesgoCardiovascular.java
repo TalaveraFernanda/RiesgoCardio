@@ -404,12 +404,26 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			this.setVisible(false);*/	
 
 			r.txtRecibir2.setText(txtEnviar1.getText());
+			r.txtRecibir3.setText(lista2.getSelectedItem().toString());
+			r.txtRecibir4.setText(lista3.getSelectedItem().toString());
+			r.txtRecibir5.setText(lista4.getSelectedItem().toString());
 			r.txtRecibir6.setText(txtEnviar10.getText());
 			r.txtRecibir7.setText(txtEnviar11.getText());
 			r.txtRecibir8.setText(txtEnviar14.getText());
 			r.txtRecibir9.setText(txtEnviar15.getText());
 			r.txtRecibir10.setText(txtEnviar16.getText());
 			r.txtRecibir11.setText(txtEnviar17.getText());
+
+			r.txtRecibir2.setEditable(false);
+			r.txtRecibir3.setEditable(false);
+			r.txtRecibir4.setEditable(false);
+			r.txtRecibir5.setEditable(false);
+			r.txtRecibir6.setEditable(false);
+			r.txtRecibir7.setEditable(false);
+			r.txtRecibir8.setEditable(false);
+			r.txtRecibir9.setEditable(false);
+			r.txtRecibir10.setEditable(false);
+			r.txtRecibir11.setEditable(false);
 		}
 
 		else if (event.getSource() == this.btnBoton2) 

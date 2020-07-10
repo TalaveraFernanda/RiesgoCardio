@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import java.util.*;
 
 class Resultados extends JFrame implements ActionListener
 {
@@ -10,6 +11,7 @@ class Resultados extends JFrame implements ActionListener
 	JLabel lblTitulo;
 	JLabel txtRecibir16;
 	ImageIcon imagen;
+	Objeto o;
 
 	JLabel lblTxt1;
 	JLabel lblTxt2;
@@ -54,7 +56,18 @@ class Resultados extends JFrame implements ActionListener
 		setLocationRelativeTo(null);
 		this.getContentPane().setBackground(Color.GRAY);
 		iniciarComponentes();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.o = o;
+		System.out.println(this.o.edad);
+		System.out.println(this.o.sexo);
+		System.out.println(this.o.diab);
+		System.out.println(this.o.taba);
+		System.out.println(this.o.sist);
+		System.out.println(this.o.dias);
+		System.out.println(this.o.colT);
+		System.out.println(this.o.tri);
+		System.out.println(this.o.hdl);
+		System.out.println(this.o.ldl);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 
@@ -262,6 +275,44 @@ class Resultados extends JFrame implements ActionListener
 	{
 		if (event.getSource() == this.btnBoton1) 
 		{
+			//Objeto o;
+			int edad = 0;
+			String sexo = "";
+			boolean diab = true;
+			String taba = "";
+			int sist = 0;
+			int dias = 0; 
+			int colT = 0; 
+			int tri = 0;
+			int hdl = 0; 
+			int ldl = 0;
+
+			String ed = Integer.toString(edad);
+			String d = String.valueOf(diab);
+			String si = Integer.toString(sist);
+			String di = Integer.toString(dias);
+			String ct = Integer.toString(colT);
+			String tr = Integer.toString(tri);
+			String h = Integer.toString(hdl);
+			String l = Integer.toString(ldl);
+
+			if(d.equals("Si"))
+				diab = true;
+			else
+				diab = false;
+
+			ArrayList<String> contenido = new ArrayList<>();
+			contenido.add("Edad: " +ed);
+			contenido.add("Sexo: " +sexo);
+			contenido.add("Diabetes" +d);
+			contenido.add("Fuma: " +taba);
+			contenido.add("Sistole: " +si);
+			contenido.add("Diastole: " +di);
+			contenido.add("Colesterol total: " +ct);
+			contenido.add("Trigliceridos: " +tr);
+			contenido.add("HDL: " +h);
+			contenido.add("LDL: " +l);
+
 			String contenido_g;
 			contenido_g = txtRecibir2.getText();
 			contenido_g = txtRecibir3.getText();
@@ -289,6 +340,7 @@ class Resultados extends JFrame implements ActionListener
 				File fs = fc.getSelectedFile();
 				nombre_ag = fs.getAbsolutePath();
 			}
+			Archivo.crearArchivo(contenido, nombre_ag);
 			Archivo.guardarTodo(contenido_g, nombre_ag);			
 		}
 
