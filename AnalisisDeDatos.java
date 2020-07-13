@@ -16,7 +16,7 @@ public class AnalisisDeDatos extends JFrame
 	public int tri;
 	public int hdl;
 	public int ldl;
-	public int riesgoA;
+	public double riesgoA;
 
 	public AnalisisDeDatos(int edad, String sexo, boolean diab, String taba, String ant, int dieta, int anios, boolean apnea, int sist, int dias, int colT, int tri, int hdl, int ldl)
 	{
@@ -37,7 +37,7 @@ public class AnalisisDeDatos extends JFrame
 
 		realizarAnalisis();
 	}
-	public int enviarDatos(){
+	public double enviarDatos(){
 		return riesgoA;
 	}
 	public void realizarAnalisis()
@@ -252,13 +252,13 @@ public class AnalisisDeDatos extends JFrame
 		if(apnea == true)
 	   	{
 	    	pAbs = p * (1 + (0.25 * facECV) + (0.1 * 1));
-				riesgoA = (int)pAbs;
+				riesgoA = pAbs;
 	    }
 
 	   	else if(apnea == false)
 	    {
 	    	pAbs = p * (1 + (0.25 * facECV) + (0.1 * 0));
-				riesgoA = (int)pAbs;
+				riesgoA = pAbs;
 	    }
 	    System.out.println("Riesgo Absoluto: " +String.format("%.2f", pAbs));
 	    //JOptionPane.showMessageDialog(null,"Riesgo Absoluto: " +String.format("%.2f", pAbs));

@@ -53,13 +53,13 @@ class Resultados extends JFrame implements ActionListener
 	JTextField txtRecibir19;
 	JButton btnBoton1;
 	JButton btnBoton2;
-	int r1;
-	int r2;
+	double r1;
+	double r2;
 
 	Font fuente = new Font("gadugi", 0, 16);
 	Font fuente1 = new Font("sagona book", 0, 12);
 
-	public Resultados(Objeto o, int r1, int r2)
+	public Resultados(Objeto o, double r1, double r2)
 	{
 		setSize(520, 770);
 		setTitle("RIESGO CARDDIOVASCULAR RESULTADOS");
@@ -249,7 +249,8 @@ class Resultados extends JFrame implements ActionListener
 		lblTxt17.setBounds(15, 372, 300, 100);
 		lblTxt17.setForeground(Color.BLACK);
 		lblTxt17.setFont(fuente1);
-		txtRecibir17 = new JTextField(r1);
+		System.out.println(r1);
+		txtRecibir17 = new JTextField(String.format("%.2f", r1));
 		txtRecibir17.setBounds(115, 410, 75, 25);
 		txtRecibir17.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		txtRecibir17.setEditable(false);
@@ -258,7 +259,8 @@ class Resultados extends JFrame implements ActionListener
 		lblTxt18.setBounds(20, 407, 300, 100);
 		lblTxt18.setForeground(Color.BLACK);
 		lblTxt18.setFont(fuente1);
-		txtRecibir18 = new JTextField(r2);
+		System.out.println(r2);
+		txtRecibir18 = new JTextField(String.format("%.2f", r2));
 		txtRecibir18.setBounds(115, 445, 75, 25);
 		txtRecibir18.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		txtRecibir18.setEditable(false);

@@ -52,8 +52,8 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 
 	Font fuente = new Font("gadugi", 1, 14);
 	Font fuente1 = new Font("sagona book", 0, 12);
-	int r1;
-	int r2;
+	double r1;
+	double r2;
 
 	public RiesgoCardiovascular()
 	{
