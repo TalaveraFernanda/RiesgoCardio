@@ -44,7 +44,7 @@ class Resultados extends JFrame implements ActionListener
 	public static JTextField txtRecibir13;
 	public static JTextField txtRecibir14;
 	public static JTextField txtRecibir15;
-	
+
 	JLabel lblTxt17;
 	JLabel lblTxt18;
 	JLabel lblTxt19;
@@ -53,11 +53,13 @@ class Resultados extends JFrame implements ActionListener
 	JTextField txtRecibir19;
 	JButton btnBoton1;
 	JButton btnBoton2;
+	int r1;
+	int r2;
 
 	Font fuente = new Font("gadugi", 0, 16);
 	Font fuente1 = new Font("sagona book", 0, 12);
 
-	public Resultados(Objeto o)
+	public Resultados(Objeto o, int r1, int r2)
 	{
 		setSize(520, 770);
 		setTitle("RIESGO CARDDIOVASCULAR RESULTADOS");
@@ -65,10 +67,11 @@ class Resultados extends JFrame implements ActionListener
 		this.getContentPane().setBackground(Color.GRAY);
 		iniciarComponentes();
 		this.o = o;
+		this.r1 = r1;
+		this.r2 = r2;
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-
 	public void iniciarComponentes()
 	{
 		colocarPaneles();
@@ -246,7 +249,7 @@ class Resultados extends JFrame implements ActionListener
 		lblTxt17.setBounds(15, 372, 300, 100);
 		lblTxt17.setForeground(Color.BLACK);
 		lblTxt17.setFont(fuente1);
-		txtRecibir17 = new JTextField();
+		txtRecibir17 = new JTextField(r1);
 		txtRecibir17.setBounds(115, 410, 75, 25);
 		txtRecibir17.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		txtRecibir17.setEditable(false);
@@ -255,7 +258,7 @@ class Resultados extends JFrame implements ActionListener
 		lblTxt18.setBounds(20, 407, 300, 100);
 		lblTxt18.setForeground(Color.BLACK);
 		lblTxt18.setFont(fuente1);
-		txtRecibir18 = new JTextField();
+		txtRecibir18 = new JTextField(r2);
 		txtRecibir18.setBounds(115, 445, 75, 25);
 		txtRecibir18.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
 		txtRecibir18.setEditable(false);
@@ -307,7 +310,7 @@ class Resultados extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent event)
 	{
-		if (event.getSource() == this.btnBoton1) 
+		if (event.getSource() == this.btnBoton1)
 		{
 			int edad = this.o.edad;
 			String sexo = this.o.sexo;
@@ -318,12 +321,12 @@ class Resultados extends JFrame implements ActionListener
 			int anios = this.o.anios;
 			boolean apnea = this.o.apnea;
 			int sist = this.o.sist;
-			int dias = this.o.dias; 
-			int colT = this.o.colT; 
+			int dias = this.o.dias;
+			int colT = this.o.colT;
 			int tri = this.o.tri;
-			int hdl = this.o.hdl; 
+			int hdl = this.o.hdl;
 			int ldl = this.o.ldl;
-		
+
 			String ed = Integer.toString(edad);
 			String d = String.valueOf(diab);
 			String dt = Integer.toString(dieta);
@@ -361,7 +364,7 @@ class Resultados extends JFrame implements ActionListener
 			contenido.add("Trigliceridos: " +tr);
 			contenido.add("HDL: " +h);
 			contenido.add("LDL: " +l);
-			
+
 			System.out.println(contenido);
 			String nombre_ag = "";
 
@@ -370,19 +373,19 @@ class Resultados extends JFrame implements ActionListener
 
 			int userSelection = fc.showSaveDialog(this);
 
-			if (userSelection == JFileChooser.APPROVE_OPTION) 
+			if (userSelection == JFileChooser.APPROVE_OPTION)
 			{
 				File fs = fc.getSelectedFile();
 				nombre_ag = fs.getAbsolutePath();
 			}
-			Archivo.crearArchivo(contenido, nombre_ag);			
+			Archivo.crearArchivo(contenido, nombre_ag);
 		}
 
-		else if (event.getSource() == this.btnBoton2) 
+		else if (event.getSource() == this.btnBoton2)
 		{
 			RiesgoCardiovascular rc = new RiesgoCardiovascular();
 			rc.setVisible(true);
-			this.setVisible(false);	
+			this.setVisible(false);
 		}
 	}
 }

@@ -52,13 +52,15 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 
 	Font fuente = new Font("gadugi", 1, 14);
 	Font fuente1 = new Font("sagona book", 0, 12);
+	int r1;
+	int r2;
 
 	public RiesgoCardiovascular()
 	{
 		setSize(520, 800);
 		setTitle("RIESGO CARDDIOVASCULAR");
 		setLocationRelativeTo(null);
-		this.getContentPane().setBackground(Color.gray);	
+		this.getContentPane().setBackground(Color.gray);
 		iniciarComponentes();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -135,7 +137,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 		lista2 = new JComboBox(s);
 		lista2.setBounds(320, 50, 75, 25);
 		lista2.setFont(fuente1);
-		
+
 		lblTexto3 = new JLabel("Diabetes");
 		lblTexto3.setBounds(65, 60, 100, 100);
 		lblTexto3.setFont(fuente1);
@@ -159,7 +161,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 		lista5 = new JComboBox(a);
 		lista5.setBounds(125, 150, 75, 25);
 		lista5.setFont(fuente1);
-		
+
 		lblTexto6 = new JLabel("Dieta");
 		lblTexto6.setBounds(260, 110, 50, 100);
 		lblTexto6.setFont(fuente1);
@@ -211,7 +213,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 		lblTit2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTit2.setForeground(Color.BLACK);
 		lblTit2.setFont(fuente);
-		
+
 		lblTexto9 = new JLabel("Sistolica o HVI:");
 		lblTexto9.setBounds(130, 20, 150, 100);
 		lblTexto9.setFont(fuente1);
@@ -239,7 +241,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 		lblTit3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTit3.setForeground(Color.BLACK);
 		lblTit3.setFont(fuente);
-		
+
 		lblTexto11 = new JLabel("-HDL: Lipoproteinas de alta densidad");
 		lblTexto11.setBounds(130, 10, 300, 100);
 		lblTexto11.setFont(fuente1);
@@ -282,7 +284,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 		panel3.add(txtEnviar13);
 		panel3.add(txtEnviar14);
 		panel3.add(txtEnviar15);
-		panel3.add(txtEnviar16);	
+		panel3.add(txtEnviar16);
 	}
 
 	public void colocarBotones()
@@ -308,7 +310,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent event)
 	{
-		if (event.getSource() == this.btnBoton1) 
+		if (event.getSource() == this.btnBoton1)
 		{
 			String edad_str = txtEnviar1.getText();
 			String sexo = lista2.getSelectedItem().toString();
@@ -325,7 +327,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			String hdl_str = txtEnviar15.getText();
 			String ldl_str = txtEnviar16.getText();
 
-			// imprimiendo en consola 
+			// imprimiendo en consola
 			System.out.println("Edad: " +edad_str);
 			System.out.println("Sexo: " +sexo);
 			System.out.println("Diabetes: " +diab_str);
@@ -341,7 +343,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			System.out.println("HDL: " +hdl_str);
 			System.out.println("LDL: " +ldl_str);
 
-			// conversión de datos 
+			// conversión de datos
 			int edad = Integer.parseInt(edad_str);
 			// sexo se mantiene igual
 			boolean diab;
@@ -372,11 +374,13 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			int ldl = Integer.parseInt(ldl_str);
 
 			// mandar a analizar los datos:
-			AnalisisDeDatos ad = new AnalisisDeDatos(edad, sexo, diab, taba, ant, dieta, anios, apnea, sist, dias, colT, tri, hdl, ldl); 
+			AnalisisDeDatos ad = new AnalisisDeDatos(edad, sexo, diab, taba, ant, dieta, anios, apnea, sist, dias, colT, tri, hdl, ldl);
+			r1 = ad.enviarDatos();
 			AnalisisDeDatos2 ad2 = new AnalisisDeDatos2(edad, sexo, diab, taba, ant, dieta, anios, apnea, sist, dias, colT, tri, hdl, ldl);
+			r2 = ad2.enviarDatoss();
 			Objeto o = new Objeto(edad, sexo, diab, taba, ant, dieta, anios, apnea, sist, dias, colT, tri, hdl, ldl);
 
-			Resultados r = new Resultados(o);
+			Resultados r = new Resultados(o,r1,r2);
 			r.setVisible(true);
 			this.setVisible(false);
 
@@ -411,7 +415,7 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			r.txtRecibir15.setEditable(false);
 		}
 
-		else if (event.getSource() == this.btnBoton2) 
+		else if (event.getSource() == this.btnBoton2)
 		{
 			txtEnviar1.setText(null);
 			txtEnviar9.setText(null);
@@ -421,5 +425,5 @@ class RiesgoCardiovascular extends JFrame implements ActionListener
 			txtEnviar15.setText(null);
 			txtEnviar16.setText(null);
 		}
-	} 
+	}
 }
