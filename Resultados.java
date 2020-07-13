@@ -9,7 +9,7 @@ class Resultados extends JFrame implements ActionListener
 	JPanel panel1;
 	JPanel panel2;
 	JLabel lblTitulo;
-	JLabel txtRecibir16;
+	JLabel txtInsertar;
 	ImageIcon imagen;
 	Objeto o;
 
@@ -25,6 +25,10 @@ class Resultados extends JFrame implements ActionListener
 	JLabel lblTxt10;
 	JLabel lblTxt11;
 	JLabel lblTxt12;
+	JLabel lblTxt13;
+	JLabel lblTxt14;
+	JLabel lblTxt15;
+	JLabel lblTxt16;
 
 	public static JTextField txtRecibir2;
 	public static JTextField txtRecibir3;
@@ -36,13 +40,17 @@ class Resultados extends JFrame implements ActionListener
 	public static JTextField txtRecibir9;
 	public static JTextField txtRecibir10;
 	public static JTextField txtRecibir11;
+	public static JTextField txtRecibir12;
+	public static JTextField txtRecibir13;
+	public static JTextField txtRecibir14;
+	public static JTextField txtRecibir15;
 	
-	JLabel lblTxt13;
-	JLabel lblTxt14;
-	JLabel lblTxt15;
-	JTextField txtRecibir13;
-	JTextField txtRecibir14;
-	JTextField txtRecibir15;
+	JLabel lblTxt17;
+	JLabel lblTxt18;
+	JLabel lblTxt19;
+	JTextField txtRecibir17;
+	JTextField txtRecibir18;
+	JTextField txtRecibir19;
 	JButton btnBoton1;
 	JButton btnBoton2;
 
@@ -57,17 +65,7 @@ class Resultados extends JFrame implements ActionListener
 		this.getContentPane().setBackground(Color.GRAY);
 		iniciarComponentes();
 		this.o = o;
-		System.out.println(this.o.edad);
-		System.out.println(this.o.sexo);
-		System.out.println(this.o.diab);
-		System.out.println(this.o.taba);
-		System.out.println(this.o.sist);
-		System.out.println(this.o.dias);
-		System.out.println(this.o.colT);
-		System.out.println(this.o.tri);
-		System.out.println(this.o.hdl);
-		System.out.println(this.o.ldl);
-		//setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 
@@ -84,7 +82,7 @@ class Resultados extends JFrame implements ActionListener
 		panel2 = new JPanel();
 
 		panel1.setLayout(null);
-		panel1.setBounds(30, 70, 440, 240);
+		panel1.setBounds(30, 70, 440, 305);
 		panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		this.getContentPane().add(panel1);
 
@@ -97,14 +95,14 @@ class Resultados extends JFrame implements ActionListener
 	{
 		lblTitulo = new JLabel();
 		lblTitulo.setLayout(null);
-		lblTitulo.setText("RIESGO CARDIOVASCULAR");
-		lblTitulo.setBounds(120, 10, 250, 50);
+		lblTitulo.setText("RIESGO CARDIOVASCULAR: RESULTADOS");
+		lblTitulo.setBounds(30, 10, 440, 50);
 		lblTitulo.setFont(new Font("century gothic", 1, 18));
-		lblTitulo.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
+		lblTitulo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 		lblTitulo.setOpaque(true);
-		lblTitulo.setBackground(Color.WHITE);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(Color.BLACK);
+		panel2.add(lblTitulo);
 
 		lblTxt1 = new JLabel("Los datos actuales introducidos son los siguientes: ");
 		lblTxt1.setBounds(40, -25, 360, 100);
@@ -139,55 +137,75 @@ class Resultados extends JFrame implements ActionListener
 		txtRecibir5 = new JTextField();
 		txtRecibir5.setBounds(305, 90, 75, 22);
 
-		lblTxt6 = new JLabel("Sistole: ");
+		lblTxt6 = new JLabel("Antecedentes: ");
 		lblTxt6.setBounds(20, 85, 300, 100);
 		lblTxt6.setForeground(Color.BLACK);
 		lblTxt6.setFont(fuente1);
 		txtRecibir6 = new JTextField();
 		txtRecibir6.setBounds(120, 125, 75, 22);
 
-		lblTxt7 = new JLabel("Diastole: ");
+		lblTxt7 = new JLabel("Dieta: ");
 		lblTxt7.setBounds(220, 85, 300, 100);
 		lblTxt7.setForeground(Color.BLACK);
 		lblTxt7.setFont(fuente1);
 		txtRecibir7 = new JTextField();
 		txtRecibir7.setBounds(305, 125, 75, 22);
 
-		lblTxt8 = new JLabel("Colesterol total: ");
+		lblTxt8 = new JLabel("Años: ");
 		lblTxt8.setBounds(20, 120, 300, 100);
 		lblTxt8.setForeground(Color.BLACK);
 		lblTxt8.setFont(fuente1);
 		txtRecibir8 = new JTextField();
 		txtRecibir8.setBounds(120, 160, 75, 22);
 
-		lblTxt9 = new JLabel("Trigliceridos: ");
+		lblTxt9 = new JLabel("Apnea: ");
 		lblTxt9.setBounds(220, 120, 300, 100);
 		lblTxt9.setForeground(Color.BLACK);
 		lblTxt9.setFont(fuente1);
 		txtRecibir9 = new JTextField();
 		txtRecibir9.setBounds(305, 160, 75, 22);
 
-		lblTxt10 = new JLabel("HDL: ");
+		lblTxt10 = new JLabel("Sistole: ");
 		lblTxt10.setBounds(20, 155, 300, 100);
 		lblTxt10.setForeground(Color.BLACK);
 		lblTxt10.setFont(fuente1);
 		txtRecibir10 = new JTextField();
 		txtRecibir10.setBounds(120, 195, 75, 22);
 
-		lblTxt11 = new JLabel("LDL: ");
+		lblTxt11 = new JLabel("Diastole: ");
 		lblTxt11.setBounds(220, 155, 300, 100);
 		lblTxt11.setForeground(Color.BLACK);
 		lblTxt11.setFont(fuente1);
 		txtRecibir11 = new JTextField();
 		txtRecibir11.setBounds(305, 195, 75, 22);
 
-		lblTxt12 = new JLabel("El riesgo calculado es el siguiente: ");
-		lblTxt12.setBounds(125, 280, 300, 100);
+		lblTxt12 = new JLabel("Colesterol total: ");
+		lblTxt12.setBounds(20, 190, 300, 100);
 		lblTxt12.setForeground(Color.BLACK);
-		lblTxt12.setFont(fuente);
+		lblTxt12.setFont(fuente1);
+		txtRecibir12 = new JTextField();
+		txtRecibir12.setBounds(120, 230, 75, 22);
 
-		panel2.add(lblTitulo);
-		panel2.add(lblTxt12);
+		lblTxt13 = new JLabel("Trigliceridos: ");
+		lblTxt13.setBounds(220, 190, 300, 100);
+		lblTxt13.setForeground(Color.BLACK);
+		lblTxt13.setFont(fuente1);
+		txtRecibir13 = new JTextField();
+		txtRecibir13.setBounds(305, 230, 75, 22);
+
+		lblTxt14 = new JLabel("HDL: ");
+		lblTxt14.setBounds(20, 225, 300, 100);
+		lblTxt14.setForeground(Color.BLACK);
+		lblTxt14.setFont(fuente1);
+		txtRecibir14 = new JTextField();
+		txtRecibir14.setBounds(120, 265, 75, 22);
+
+		lblTxt15 = new JLabel("LDL: ");
+		lblTxt15.setBounds(220, 225, 300, 100);
+		lblTxt15.setForeground(Color.BLACK);
+		lblTxt15.setFont(fuente1);
+		txtRecibir15 = new JTextField();
+		txtRecibir15.setBounds(305, 265, 75, 22);
 
 		panel1.add(lblTxt1);
 		panel1.add(lblTxt2);
@@ -200,6 +218,10 @@ class Resultados extends JFrame implements ActionListener
 		panel1.add(lblTxt9);
 		panel1.add(lblTxt10);
 		panel1.add(lblTxt11);
+		panel1.add(lblTxt12);
+		panel1.add(lblTxt13);
+		panel1.add(lblTxt14);
+		panel1.add(lblTxt15);
 		panel1.add(txtRecibir2);
 		panel1.add(txtRecibir3);
 		panel1.add(txtRecibir4);
@@ -210,58 +232,70 @@ class Resultados extends JFrame implements ActionListener
 		panel1.add(txtRecibir9);
 		panel1.add(txtRecibir10);
 		panel1.add(txtRecibir11);
+		panel1.add(txtRecibir12);
+		panel1.add(txtRecibir13);
+		panel1.add(txtRecibir14);
+		panel1.add(txtRecibir15);
 
-		lblTxt13 = new JLabel("Riesgo Absoluto ");
-		lblTxt13.setBounds(20, 320, 300, 100);
-		lblTxt13.setForeground(Color.BLACK);
-		lblTxt13.setFont(fuente1);
-		txtRecibir13 = new JTextField();
-		txtRecibir13.setBounds(150, 357, 75, 25);
-		txtRecibir13.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		lblTxt16 = new JLabel("El riesgo calculado es el siguiente: ");
+		lblTxt16.setBounds(125, 340, 300, 100);
+		lblTxt16.setForeground(Color.BLACK);
+		lblTxt16.setFont(fuente);
 
-		lblTxt14 = new JLabel("Riesgo Ideal ");
-		lblTxt14.setBounds(30, 360, 300, 100);
-		lblTxt14.setForeground(Color.BLACK);
-		lblTxt14.setFont(fuente1);
-		txtRecibir14 = new JTextField();
-		txtRecibir14.setBounds(150, 396, 75, 25);
-		txtRecibir14.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		lblTxt17 = new JLabel("Riesgo Absoluto ");
+		lblTxt17.setBounds(15, 372, 300, 100);
+		lblTxt17.setForeground(Color.BLACK);
+		lblTxt17.setFont(fuente1);
+		txtRecibir17 = new JTextField();
+		txtRecibir17.setBounds(115, 410, 75, 25);
+		txtRecibir17.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		txtRecibir17.setEditable(false);
 
-		lblTxt15 = new JLabel("Riesgo en Exceso ");
-		lblTxt15.setBounds(20, 400, 300, 100);
-		lblTxt15.setForeground(Color.BLACK);
-		lblTxt15.setFont(fuente1);
-		txtRecibir15 = new JTextField();
-		txtRecibir15.setBounds(150, 435, 75, 25);
-		txtRecibir15.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		lblTxt18 = new JLabel("Riesgo Ideal ");
+		lblTxt18.setBounds(20, 407, 300, 100);
+		lblTxt18.setForeground(Color.BLACK);
+		lblTxt18.setFont(fuente1);
+		txtRecibir18 = new JTextField();
+		txtRecibir18.setBounds(115, 445, 75, 25);
+		txtRecibir18.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		txtRecibir18.setEditable(false);
+
+		lblTxt19 = new JLabel("Riesgo en Exceso ");
+		lblTxt19.setBounds(10, 442, 300, 100);
+		lblTxt19.setForeground(Color.BLACK);
+		lblTxt19.setFont(fuente1);
+		txtRecibir19 = new JTextField();
+		txtRecibir19.setBounds(115, 480, 75, 25);
+		txtRecibir19.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+		txtRecibir19.setEditable(false);
 
 		imagen = new ImageIcon("riesgocardiovascular.jpg");
-		txtRecibir16 = new JLabel();
-		txtRecibir16.setBounds(200, 480, 280, 180);
-		txtRecibir16.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(280, 180, Image.SCALE_SMOOTH)));
+		txtInsertar = new JLabel();
+		txtInsertar.setBounds(200, 410, 280, 180);
+		txtInsertar.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(280, 180, Image.SCALE_SMOOTH)));
 
-		panel2.add(lblTxt13);
-		panel2.add(lblTxt14);
-		panel2.add(lblTxt15);
-		panel2.add(txtRecibir13);
-		panel2.add(txtRecibir14);
-		panel2.add(txtRecibir15);
-		panel2.add(txtRecibir16);
+		panel2.add(lblTxt16);
+		panel2.add(lblTxt17);
+		panel2.add(lblTxt18);
+		panel2.add(lblTxt19);
+		panel2.add(txtRecibir17);
+		panel2.add(txtRecibir18);
+		panel2.add(txtRecibir19);
+		panel2.add(txtInsertar);
 	}
 
 	public void colocarBotones()
 	{
 		btnBoton1 = new JButton("Guardar datos");
 		btnBoton1.setBounds(125, 680, 120, 25);
-		btnBoton1.setFont(new Font("sagona book", 1, 12));
-		btnBoton1.setBackground(Color.green);
+		btnBoton1.setFont(new Font("sagona book", 3, 12));
+		btnBoton1.setForeground(Color.BLACK);
 		btnBoton1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 		btnBoton2 = new JButton("Regresar");
 		btnBoton2.setBounds(265, 680, 120, 25);
-		btnBoton2.setFont(new Font("sagona book", 1, 12));
-		btnBoton2.setBackground(Color.red);
-		btnBoton2.setForeground(Color.WHITE);
+		btnBoton2.setFont(new Font("sagona book", 3, 12));
+		btnBoton2.setForeground(Color.BLACK);
 		btnBoton2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 		panel2.add(btnBoton1);
@@ -275,20 +309,26 @@ class Resultados extends JFrame implements ActionListener
 	{
 		if (event.getSource() == this.btnBoton1) 
 		{
-			//Objeto o;
-			int edad = 0;
-			String sexo = "";
-			boolean diab = true;
-			String taba = "";
-			int sist = 0;
-			int dias = 0; 
-			int colT = 0; 
-			int tri = 0;
-			int hdl = 0; 
-			int ldl = 0;
-
+			int edad = this.o.edad;
+			String sexo = this.o.sexo;
+			boolean diab = this.o.diab;
+			String taba = this.o.taba;
+			String ant = this.o.ant;
+			int dieta = this.o.dieta;
+			int anios = this.o.anios;
+			boolean apnea = this.o.apnea;
+			int sist = this.o.sist;
+			int dias = this.o.dias; 
+			int colT = this.o.colT; 
+			int tri = this.o.tri;
+			int hdl = this.o.hdl; 
+			int ldl = this.o.ldl;
+		
 			String ed = Integer.toString(edad);
 			String d = String.valueOf(diab);
+			String dt = Integer.toString(dieta);
+			String an =  Integer.toString(anios);
+			String ap = String.valueOf(apnea);
 			String si = Integer.toString(sist);
 			String di = Integer.toString(dias);
 			String ct = Integer.toString(colT);
@@ -301,33 +341,28 @@ class Resultados extends JFrame implements ActionListener
 			else
 				diab = false;
 
+			if(ap.equals("Si"))
+				apnea = true;
+			else
+				apnea = false;
+
 			ArrayList<String> contenido = new ArrayList<>();
 			contenido.add("Edad: " +ed);
 			contenido.add("Sexo: " +sexo);
-			contenido.add("Diabetes" +d);
+			contenido.add("Diabetes: " +d);
 			contenido.add("Fuma: " +taba);
+			contenido.add("Antecedentes: " +ant);
+			contenido.add("Dieta: " +dt);
+			contenido.add("Años: " +an);
+			contenido.add("Apnea: " +ap);
 			contenido.add("Sistole: " +si);
 			contenido.add("Diastole: " +di);
 			contenido.add("Colesterol total: " +ct);
 			contenido.add("Trigliceridos: " +tr);
 			contenido.add("HDL: " +h);
 			contenido.add("LDL: " +l);
-
-			String contenido_g;
-			contenido_g = txtRecibir2.getText();
-			contenido_g = txtRecibir3.getText();
-			contenido_g = txtRecibir4.getText();
-			contenido_g = txtRecibir5.getText();
-			contenido_g = txtRecibir6.getText();
-			contenido_g = txtRecibir7.getText();
-			contenido_g = txtRecibir8.getText();
-			contenido_g = txtRecibir9.getText();
-			contenido_g = txtRecibir10.getText();
-			contenido_g = txtRecibir11.getText();
-			contenido_g = txtRecibir13.getText();
-			contenido_g = txtRecibir14.getText();
-			contenido_g = txtRecibir15.getText();
-
+			
+			System.out.println(contenido);
 			String nombre_ag = "";
 
 			JFileChooser fc = new JFileChooser();
@@ -340,8 +375,7 @@ class Resultados extends JFrame implements ActionListener
 				File fs = fc.getSelectedFile();
 				nombre_ag = fs.getAbsolutePath();
 			}
-			Archivo.crearArchivo(contenido, nombre_ag);
-			Archivo.guardarTodo(contenido_g, nombre_ag);			
+			Archivo.crearArchivo(contenido, nombre_ag);			
 		}
 
 		else if (event.getSource() == this.btnBoton2) 

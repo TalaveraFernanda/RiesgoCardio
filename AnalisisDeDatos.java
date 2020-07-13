@@ -6,27 +6,28 @@ public class AnalisisDeDatos extends JFrame
 	public String sexo;
 	public boolean diab;
 	public String taba;
-	public int dieta;
 	public String ant;
+	public int dieta;
+	public int anios;
 	public boolean apnea;
-	public int anos;
 	public int sist;
 	public int dias; 
 	public int colT; 
 	public int tri;
 	public int hdl; 
 	public int ldl;
+	public int riesgoA;
 
-	public AnalisisDeDatos(int edad, String sexo, boolean diab, String taba, int dieta, String ant, boolean apnea, int anos, int sist, int dias, int colT, int tri, int hdl, int ldl)
+	public AnalisisDeDatos(int edad, String sexo, boolean diab, String taba, String ant, int dieta, int anios, boolean apnea, int sist, int dias, int colT, int tri, int hdl, int ldl)
 	{
 		this.edad = edad;
 		this.sexo = sexo;
 		this.diab = diab;
 		this.taba = taba;
-		this.dieta = dieta;
 		this.ant = ant;
+		this.dieta = dieta;
+		this.anios = anios;
 		this.apnea = apnea;
-		this.anos = anos;
 		this.sist = sist;
 		this.dias = dias;
 		this.colT = colT;
@@ -40,18 +41,18 @@ public class AnalisisDeDatos extends JFrame
 	public void realizarAnalisis()
 	{
     	//Calculo del factor edad
-		// Siendo la variable edad el % de incremento de riesgo, el rango de edad admitido es de 20 a 100 años.
+		//Siendo la variable edad el % de incremento de riesgo, el rango de edad admitido es de 20 a 100 años.
 		double facEdad = 0;
 		if(sexo.equals("Hombre"))
 	   	{ 
 			facEdad = -(Math.pow((0.34 * edad), 2)) + (11.2 * edad) - 9.65;
 	    }
 
-		if(sexo.equals("Mujer"))
+		else if(sexo.equals("Mujer"))
 		{
 			facEdad = Math.pow((0.07 * edad), 4) - Math.pow((1.48 * edad), 3) + Math.pow((9.94 * edad), 2) - (17 * edad) + 8.15;
 		}
-		System.out.println("FactEdad: " +facEdad);
+		//System.out.println("Factor Edad: " +facEdad);
 
 	  	//Calculo del factor: facCOL
 		//Siendo FacCOL el % de incremento de riesgo y colTot el nivel de colesterol total en sangre en mg/dl.
@@ -108,13 +109,13 @@ public class AnalisisDeDatos extends JFrame
 				factTAB = 0.2767 * factT;
 			}
 
-			else if(taba.equals ("No"))
+			else if(taba.equals("No"))
 			{
 				factT = (-0.6596 * (Math.pow(0, 3)) + (11.883*(Math.pow(0, 2))) - (67.758 * (0)) + 156.27); 
 				factTAB = 0.2767 * factT;
 			}
 
-			else if(taba.equals ("Fumador Pasivo"))
+			else if(taba.equals("Fumador Pasivo"))
 			{
 				factT = (-0.6596 * (Math.pow(0.3, 3)) + (11.883*(Math.pow(0.3, 2))) - (67.758 * (0.3)) + 156.27); 
 				factTAB = 0.2767 * factT;
@@ -152,11 +153,13 @@ public class AnalisisDeDatos extends JFrame
 		{
 		   factECV = 1;
 		}
-		 else if(ant.equals("AP"))
+		
+		else if(ant.equals("AP"))
 	    {
 	   		factECV = 0.25;
 	   	}
-	   	 else if(ant.equals("AP"))
+	   	
+	   	else if(ant.equals("No"))
 	    {
 	   		factECV = 0;
 	   	}
@@ -175,7 +178,7 @@ public class AnalisisDeDatos extends JFrame
 		FactA = lambda - facSBP	- factTAB - facCOL - facHVI*/
 		double a;
 		a = lambda - (0.9119 * Math.log(facSBP)) - factTAB - facCOL;// - (0.5865 * factECV);
-		System.out.println("a: " +a);
+		//System.out.println("a: " +a);
 
 		/*El siguiente paso es calcular el término dependiente de la edad, el sexo y la resistencia insulínica. 
 		Se aplican diferentes fórmulas para hombres y mujeres*/
@@ -216,15 +219,15 @@ public class AnalisisDeDatos extends JFrame
 		mu = 4.4181 + m;
 		ro = Math.exp(-0.3255 - (0.2784 * m));
 
-		/* Se ha utilizado un modelo de regresión paramétrica multivariable para la estimación del riesgo.
+		/*Se ha utilizado un modelo de regresión paramétrica multivariable para la estimación del riesgo.
 		Donde T es el tiempo hasta la aparición del accidente cardiovascular, log es la función 
-		"logaritmo natural o neperiano" y mu/ro dependen de los factores de riesgo */
+		"logaritmo natural o neperiano" y mu/ro dependen de los factores de riesgo*/
 		double r = 0;
 
-		r = (Math.log(anos) - mu) / ro;
-		System.out.println("El valor de R es: " +r);
+		r = (Math.log(anios) - mu) / ro;
+		//System.out.println("El valor de R es: " +r);
 
-		// Calculo de la probabilidad de sufrir un accidente cardiovascular dentro de T años es
+		//Calculo de la probabilidad de sufrir un accidente cardiovascular dentro de T años es
 		double euler = 0;			
 		double p = 0;
 		double expon = 0;
@@ -234,13 +237,13 @@ public class AnalisisDeDatos extends JFrame
 
 	 	//Presentacion de resultados en porcentaje 		
 	 	p = 100 * (1 - expon);
-		System.out.println("Porcentaje: " +p);
+		//System.out.println("Porcentaje: " +p);
 		//JOptionPane.showMessageDialog(null,"Porcentaje de riesgo: " +p);
 
 		/*Calculo de la probabilidad Absoluta
 		A partir de aquí, se incrementa esta probabilidad en el porcentaje correspondiente a la presencia de 
-		antecedentes de enfermedad cardiovascular. Se incrementará un 25% en el caso de angina de pecho (antecedentes=1 ) 
-		o un 100 % en el caso de infarto de miocardio definitivo (antecedentes=2). 
+		antecedentes de enfermedad cardiovascular. Se incrementará un 25% en el caso de angina de pecho (antecedentes = 1) 
+		o un 100 % en el caso de infarto de miocardio definitivo (antecedentes = 2). 
 		En caso de que exista apnea del sueño se incrementa la probabilidad en un 10%
 		Pabs = P x (1 + 0.25 x antecedentes^2 + 0.1 x apnea)*/
 		double pAbs = 0;
@@ -251,9 +254,11 @@ public class AnalisisDeDatos extends JFrame
 	    	pAbs = p * (1 + (0.25 * facECV) + (0.1 * 1));
 	    }
 
-	   	if(apnea == false)
+	   	else if(apnea == false)
 	    { 	
 	    	pAbs = p * (1 + (0.25 * facECV) + (0.1 * 0));
 	    }
+	    System.out.println("Riesgo Absoluto: " +String.format("%.2f", pAbs));
+	    //JOptionPane.showMessageDialog(null,"Riesgo Absoluto: " +String.format("%.2f", pAbs));
 	}
 }

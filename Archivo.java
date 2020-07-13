@@ -49,7 +49,7 @@ class Archivo
     {
         try
         {
-            String ruta = "./" + nombre;
+            String ruta = nombre;
             File file = new File(ruta);
 
             if(!file.exists())
@@ -58,7 +58,7 @@ class Archivo
             }
 
             FileWriter fw = new FileWriter(file, true); 
-            BufferedWriter bw = new BufferedWriter (fw);
+            BufferedWriter bw = new BufferedWriter(fw);
 
             for (int i=0; i<contenido.size(); i++) 
             {
@@ -72,5 +72,7 @@ class Archivo
         {
             e.printStackTrace();
         }
+
+        System.out.println("Se creo y guardo un archivo");
     }
 }
